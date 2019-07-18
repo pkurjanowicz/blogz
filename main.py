@@ -27,7 +27,8 @@ def newpost():
 
 @app.route("/blog", methods=["POST", "GET"])
 def blog():
-    if request.method == "POST":  
+    if request.method == "POST":
+        entries = Blog.query.all()  
         title = request.form["title"]
         entry = request.form["entry"]  
         entry_error = ''
@@ -41,8 +42,14 @@ def blog():
         new_post = Blog(title,entry)
         db.session.add(new_post)
         db.session.commit()
-    entries = Blog.query.all()
-    return render_template("blog.html", entries = entries)
+        entry = Blog.query.filter_by(title=title).first()
+        return redirect(f"/blog?id={entry.id}")
+    if request.method == "GET":
+        entries = Blog.query.all()
+        if request.args.get('id') != 'None':
+            value = request.args.get('id')
+            entries2 = Blog.query.filter_by(id=value).first()
+        return render_template("blog.html", entries = entries, entries2 = entries2)
 
 if __name__ == "__main__":
     app.run()

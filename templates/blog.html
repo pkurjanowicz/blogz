@@ -1,8 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% for entry in entries %}
-    <h1>{{entry.title}}</h1>
-    <p>{{entry.body}}</p>
-{% endfor %}
+{% if request.args.get('id') != None %}
+    <h1><center>{{entries2.title}}</center></h1>
+    <p>{{entries2.body}}</p>
+{% else %}
+        {% for entry in entries %}
+            <a href="/blog?id={{entry.id}}"><h1>{{entry.title}}</h1></a>
+            <p>{{entry.body}}</p>
+        {% endfor %}
+{% endif %}
 {% endblock %}
