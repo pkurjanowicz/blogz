@@ -1,13 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% if request.args.get('id') != None %}
-    <h1><center>{{entries2.title}}</center></h1>
-    <p>{{entries2.body}}</p>
-{% else %}
-        {% for entry in entries %}
-            <a href="/blog?id={{entry.id}}"><h1>{{entry.title}}</h1></a>
-            <p>{{entry.body}}</p>
-        {% endfor %}
-{% endif %}
+<h1>All Blog Posts</h1>
+{% for entry in entries %}
+        <a href="/blog?id={{entry.id}}"><h3>{{entry.title}}</h3></a>
+        <p>{{entry.body}}</p>
+        <em><p>written by <a href="/blog?user={{entry.owner.username}}">{{entry.owner.username}}</a></p></em>
+{% endfor %}
 {% endblock %}

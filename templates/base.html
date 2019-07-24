@@ -6,12 +6,19 @@
         .error{
             color:red;
         }
+        .logout{
+            float: right;
+        }
     </style>
 </head>
 <body>
     <div>
-        <a href="/blog">Main Blog Page</a>&nbsp;&nbsp;&nbsp;    
-        <a href="/newpost">Add Blog Entry</a>
+        <a href="/">Home</a>&nbsp;&nbsp;&nbsp;   
+        <a href="/blog">All Entries</a>&nbsp;&nbsp;&nbsp;    
+        <a href="/newpost">Add Blog Entry</a>&nbsp;&nbsp;&nbsp;  
+        <a href="/signup">Signup</a>&nbsp;&nbsp;&nbsp;  
+        <a href="/login">Login</a>&nbsp;&nbsp;&nbsp;  
+        <a href="/logout" class='logout'>Logout</a>&nbsp;&nbsp;&nbsp;  
     </div>
 
     {% with messages = get_flashed_messages(with_categories=True) %}

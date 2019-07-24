@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Blog Posts</h1>
+<h3>{{entries2.title}}</h3>
+<p>{{entries2.body}}</p>
+<em><p>written by <a href="/blog?user={{user.username}}">{{user.username}}</a></p></em>
+
+{% endblock %}
